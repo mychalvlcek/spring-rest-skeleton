@@ -8,3 +8,4 @@ spring-boot based REST skeleton app
 
 #### # supported libs/technologies
  * logging framework (http://logback.qos.ch/)
+ * database migrations framework (https://flywaydb.org/)
