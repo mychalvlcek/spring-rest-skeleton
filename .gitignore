@@ -1,0 +1,6 @@
+!.gitkeep
+/target/
+/out/
+*.log
+
+src/main/resources/application-dev.properties
