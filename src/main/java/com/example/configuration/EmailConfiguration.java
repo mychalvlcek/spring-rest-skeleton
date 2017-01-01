@@ -1,9 +1,11 @@
 package com.example.configuration;
 
+import com.example.service.email.decorator.AsyncMailSender;
+import com.example.service.email.decorator.ConsoleMailSender;
+import com.example.service.email.decorator.LoggableMailSender;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -18,6 +20,22 @@ public class EmailConfiguration {
 	public EmailConfiguration(MailProperties properties) {
 		this.properties = properties;
 
+	}
+
+	@Bean
+	@Primary
+	@DependsOn("mailSender")
+	@Profile({"dev"})
+	public JavaMailSender consoleMailSender(JavaMailSender mailSender) {
+		return new AsyncMailSender(new LoggableMailSender(new ConsoleMailSender(mailSender)));
+	}
+
+	@Bean
+	@Primary
+	@DependsOn("mailSender")
+	@Profile({"!dev"})
+	public JavaMailSender loggableMailSender(JavaMailSender mailSender) {
+		return new AsyncMailSender(new LoggableMailSender(mailSender));
 	}
 
 	@Bean
