@@ -14,9 +14,15 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
 
+/**
+ * Configuration for:
+ * - i18n
+ * - static file serving
+ *
+ */
 @Configuration
 @EnableWebMvc
-public class InternationalizationConfiguration extends WebMvcConfigurerAdapter {
+public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {"classpath:/public/" };
 
