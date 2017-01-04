@@ -3,11 +3,18 @@ package com.example.configuration;
 import com.example.service.email.decorator.AsyncMailSender;
 import com.example.service.email.decorator.ConsoleMailSender;
 import com.example.service.email.decorator.LoggableMailSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import java.util.Properties;
 
@@ -16,6 +23,9 @@ import java.util.Properties;
 public class EmailConfiguration {
 
 	private final MailProperties properties;
+
+	@Autowired
+	private MessageSource messageSource;
 
 	public EmailConfiguration(MailProperties properties) {
 		this.properties = properties;
@@ -54,5 +64,22 @@ public class EmailConfiguration {
 			sender.setJavaMailProperties(mailProperties);
 		}
 		return sender;
+	}
+
+	@Bean
+	public TemplateEngine emailTemplateEngine() {
+		final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+		templateEngine.addTemplateResolver(htmlTemplateResolver());
+		templateEngine.setTemplateEngineMessageSource(messageSource);
+		return templateEngine;
+	}
+
+	private ITemplateResolver htmlTemplateResolver() {
+		final ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+		templateResolver.setPrefix("/templates/mail/");
+		templateResolver.setSuffix(".html");
+		templateResolver.setTemplateMode(TemplateMode.HTML);
+		templateResolver.setCacheable(false);
+		return templateResolver;
 	}
 }
