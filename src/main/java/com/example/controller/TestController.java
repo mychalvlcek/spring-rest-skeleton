@@ -1,17 +1,14 @@
 package com.example.controller;
 
+import com.example.service.email.MailService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.Locale;
 
 @Slf4j
@@ -21,10 +18,10 @@ import java.util.Locale;
 public class TestController {
 
 	@NonNull
-	private JavaMailSender mailSender;
+	private MessageSource messageSource;
 
 	@NonNull
-	private MessageSource messageSource;
+	private MailService mailService;
 
 
 	@RequestMapping("/i18n")
@@ -37,17 +34,9 @@ public class TestController {
 	}
 
 	@RequestMapping("/email")
-	public String testEmail() throws MessagingException {
+	public String testEmail() throws Exception {
 		LOG.info("test email sending");
-
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message);
-		helper.setFrom("mychalvlcek@gmail.com");
-		helper.setTo("springtest@gustr.com");
-		helper.setSubject("Test Subject!");
-		helper.setText("Test of email message from Java." +
-			"Message could be found @ http://www.fakemailgenerator.com/#/gustr.com/springtest/");
-		mailSender.send(message);
+		mailService.send(MailService.EXAMPLE_MAIL);
 
 		return "Email was sent";
 	}
