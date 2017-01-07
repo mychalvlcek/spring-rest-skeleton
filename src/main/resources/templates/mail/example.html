@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:remove="all">Template for HTML email</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    body {
+      font-size: 14px;
+      font-family: Helvetica;
+    }
+
+    li {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+<p>
+  Hello [[${name}]]! <span th:if="${name.length() gt 10}">Wow! You've got a long name (more than 10 chars)!</span>
+</p>
+<p>Message could be found @ http://www.fakemailgenerator.com/#/gustr.com/springtest/</p>
+<p>
+  Example of localized message: <span th:text="#{it.works(1, 'cz')}">Hello, Peter Static!</span>
+</p>
+
+<p>Your hobbies are:</p>
+<ul th:remove="all-but-first">
+  <li th:each="hobby : ${hobbies}" th:text="${hobby}">Reading</li>
+  <li>Writing</li>
+  <li>Bowling</li>
+</ul>
+
+<p>
+  You can find source code of <em>this</em> message as an attachment.
+  Advanced mail template examples at https://github.com/mailchimp/email-blueprints.
+</p>
+
+<img src="../../public/images/thymeleaf-logo.png" th:src="@{${baseUrl} + '/images/thymeleaf-logo.png'}" width="100" />
+<p>
+  Regards, <br />
+  &emsp; <em>The Thymeleaf Team</em>
+</p>
+
+<small>Sent on <span th:text="${#dates.format(now)}">28-12-2012</span></small>
+
+</body>
+</html>
