@@ -52,7 +52,7 @@
 			<version>5.1.40</version>
 		</dependency>
 
-		<!-- emails -->
+		<!-- email -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>

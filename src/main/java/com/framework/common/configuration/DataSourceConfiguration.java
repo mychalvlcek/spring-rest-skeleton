@@ -1,4 +1,4 @@
-package com.example.configuration;
+package com.framework.common.configuration;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -19,12 +19,13 @@ spring-boot based REST skeleton app
  * app supports i18n messages, just fill them in `src/main/resources/i18n/messages_{locale}.properties`
  * locale is firstly retrieved from *Accept* header and then stored in cookie
  * locale can be changed by *GET* parameter `?setLocale=en`
- * example is available at `GET /test/i18n`  
+ * example is available at `GET /demo/i18n`  
 
 ----
 
 #### `emailing`
  * mailService for sending templatable email messages
  * email supports: thymeleaf templating engine, i18n messages, absolute linked images, attachments
- * you can setup your own mail message template preparator ([example](src/main/java/com/example/service/email/preparator/ExampleMailPreparator.java))
+ * you can setup your own mail message template preparator ([example](src/main/java/com/example/service/email/preparator/ExampleMailPreparator.java)) For every type of message (template) you need to implement separate MailPreparator.
  * usage: `mailService.send(new ExampleMailPreparator());`
+ * an example endpoint to send a demo email: `GET /demo/mail`

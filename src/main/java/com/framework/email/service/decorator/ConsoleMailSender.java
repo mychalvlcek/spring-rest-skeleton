@@ -1,4 +1,4 @@
-package com.example.service.email.decorator;
+package com.framework.email.service.decorator;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailException;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * Mail sender decorator for development environment.
- * Instead of sending emails just print them to console.
+ * Instead of sending email just print them to console.
  * <p>ALERT: This decorator does NOT propagate calls to next decorators in chain.
  * So recommended usage is like following:</p>
  *

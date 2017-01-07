@@ -1,7 +1,7 @@
-package com.example.controller;
+package com.example.framework.email.controller;
 
-import com.example.service.email.MailService;
-import com.example.service.email.preparator.ExampleMailPreparator;
+import com.example.framework.email.preparator.ExampleMailPreparator;
+import com.framework.email.service.MailService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +15,8 @@ import java.util.Locale;
 @Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/demo")
+public class DemoController {
 
 	@NonNull
 	private MessageSource messageSource;
@@ -30,11 +30,10 @@ public class TestController {
 		Object[] args = {2, locale.getLanguage()};
 		String message = messageSource.getMessage("it.works", args, locale);
 		LOG.info(message);
-
 		return message;
 	}
 
-	@RequestMapping("/email")
+	@RequestMapping(path = {"/mail"})
 	public String testEmail() throws Exception {
 		LOG.info("test email sending");
 		mailService.send(new ExampleMailPreparator());

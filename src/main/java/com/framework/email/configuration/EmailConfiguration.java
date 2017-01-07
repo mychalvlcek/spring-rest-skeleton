@@ -1,8 +1,8 @@
-package com.example.configuration;
+package com.framework.email.configuration;
 
-import com.example.service.email.decorator.AsyncMailSender;
-import com.example.service.email.decorator.ConsoleMailSender;
-import com.example.service.email.decorator.LoggableMailSender;
+import com.framework.email.service.decorator.AsyncMailSender;
+import com.framework.email.service.decorator.ConsoleMailSender;
+import com.framework.email.service.decorator.LoggableMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
