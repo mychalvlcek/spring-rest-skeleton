@@ -1,6 +1,5 @@
 package com.example.service.email;
 
-import com.example.service.email.preparator.ExampleMailPreparator;
 import com.example.service.email.preparator.TemplatableMailPreparator;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +23,6 @@ import javax.validation.constraints.NotNull;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class MailService {
-
-	public static final ExampleMailPreparator EXAMPLE_MAIL = new ExampleMailPreparator();
 
 	@NonNull
 	private final JavaMailSender mailSender;

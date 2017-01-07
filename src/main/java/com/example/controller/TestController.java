@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.service.email.MailService;
+import com.example.service.email.preparator.ExampleMailPreparator;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +37,7 @@ public class TestController {
 	@RequestMapping("/email")
 	public String testEmail() throws Exception {
 		LOG.info("test email sending");
-		mailService.send(MailService.EXAMPLE_MAIL);
+		mailService.send(new ExampleMailPreparator());
 
 		return "Email was sent";
 	}
