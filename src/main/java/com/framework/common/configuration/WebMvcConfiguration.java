@@ -1,4 +1,4 @@
-package com.example.configuration;
+package com.framework.common.configuration;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -15,14 +15,15 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import java.util.Locale;
 
 /**
- * Configuration for:
- * - i18n
- * - static file serving
- *
+ * Configuration for emails:
+ * <ul>
+ *     <li>i18n - Translations</li>
+ *     <li>static files serving - public files which are available for any user</li>
+ * </ul>
  */
 @Configuration
 @EnableWebMvc
-public class WebConfiguration extends WebMvcConfigurerAdapter {
+public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {"classpath:/public/" };
 

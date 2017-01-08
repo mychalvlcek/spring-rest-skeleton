@@ -1,6 +1,6 @@
-package com.example.service.email.preparator;
+package com.framework.email.service.preparator;
 
-import com.example.service.email.MailService;
+import com.framework.email.service.MailService;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.thymeleaf.context.IContext;

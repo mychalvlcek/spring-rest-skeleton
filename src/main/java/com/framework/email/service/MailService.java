@@ -1,6 +1,6 @@
-package com.example.service.email;
+package com.framework.email.service;
 
-import com.example.service.email.preparator.TemplatableMailPreparator;
+import com.framework.email.service.preparator.TemplatableMailPreparator;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 import javax.validation.constraints.NotNull;
 
 /**
- * Service for sending templatable emails (with thymeleaf templating engine).
+ * Service for sending templatable email (with thymeleaf templating engine).
  *
  * @author Michal Vlcek <mychalvlcek@gmail.com>
  * @see TemplatableMailPreparator

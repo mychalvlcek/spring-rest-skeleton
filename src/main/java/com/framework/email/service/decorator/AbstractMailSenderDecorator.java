@@ -1,9 +1,8 @@
-package com.example.service.email.decorator;
+package com.framework.email.service.decorator;
 
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 
 import javax.mail.internet.MimeMessage;
@@ -12,11 +11,10 @@ import java.io.InputStream;
 /**
  * Base {@link JavaMailSender} decorator class.
  * Class just wraps underlying (decorated) object.
- * It is furthermore intended for usage with other decorators.
+ * Furthermore it is intended to use it with other decorators.
  *
  * @author Michal Vlcek <mychalvlcek@gmail.com>
  * @see AsyncMailSender
- * @see FileMailSender
  * @see LoggableMailSender
  */
 public abstract class AbstractMailSenderDecorator implements JavaMailSender {

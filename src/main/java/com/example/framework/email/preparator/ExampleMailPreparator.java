@@ -1,5 +1,6 @@
-package com.example.service.email.preparator;
+package com.example.framework.email.preparator;
 
+import com.framework.email.service.preparator.TemplatableMailPreparator;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.thymeleaf.context.Context;
@@ -30,7 +31,7 @@ public class ExampleMailPreparator extends TemplatableMailPreparator {
 
 	@Override
 	public String getTemplate() {
-		return "example";
+		return "example/demo_template";
 	}
 
 	@Override
